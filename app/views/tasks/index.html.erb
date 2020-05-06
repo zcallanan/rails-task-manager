@@ -1,14 +1,16 @@
 <div class="task-container">
   <h1>My tasks</h1>
 
+  <div class="mb-3">
   <% @tasks.each do |task| %>
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="completed">
-    <% if task.completed == true %>
-      <label class="form-check-label active" for="completed">
+    <% if task.completed %>
+      <input class="form-check-input" type="checkbox" value="" id="completed" checked>
+      <label class="form-check-label" for="completed">
       <%= link_to task.title, task_path(task) %> • <%= link_to "Delete", task_path(task), method: :delete, data: {
             confirm: 'Are you sure?' } %>
     <% else %>
+      <input class="form-check-input" type="checkbox" value="" id="completed">
       <label class="form-check-label" for="completed">
       <%= link_to task.title, task_path(task) %> • <%= link_to "Delete", task_path(task), method: :delete, data: {
             confirm: 'Are you sure?' } %>
@@ -16,6 +18,7 @@
     </label>
   </div>
   <% end %>
+  </div>
 
   <%= link_to 'Create new task', new_task_path %>
 </div>

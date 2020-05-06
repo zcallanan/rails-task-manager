@@ -4,17 +4,9 @@
   <p><%= @task.details %></p>
 </div>
 
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="completed">
-    <% if @task.completed == true %>
-    <label class="form-check-label active" for="completed">
-      This task is completed
-    <% else %>
-      <label class="form-check-label" for="completed">
-      This task is not yet completed
-    <% end %>
-  </label>
-</div>
+<%= check_box_tag("name", "value",@task.completed, class: "checkbox") %>
+<%= label_tag :checkbox, "This task is #{ @task.completed ? '' : 'not' } completed" %>
+
 
 
 <%= link_to 'Tasks', index_path %>
